@@ -10,11 +10,14 @@ void saxpy_kernel(const float* x, const float* y, float* z, float a, int n);
 void blur3x3_naive(const float* in, float* out, int H, int W);
 }
 
+
 static void eventElapsedMS(cudaEvent_t beg, cudaEvent_t end, const char* tag) {
     float ms = 0.f;
     CHECK_CUDA(cudaEventElapsedTime(&ms, beg, end));
     printf("[TIME] %s: %.3f ms\n", tag, ms);
 }
+
+
 
 int main(int argc, char** argv) {
     // Config
