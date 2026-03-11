@@ -119,6 +119,7 @@ int main(int argc, char **argv)
     printf("Blur sample: in[0]=%.3f out[0]=%.3f\n", h_img_in[0], h_img_out[0]);
 
     // Cleanup
+
     CHECK_CUDA(cudaFree(d_img_in));
     CHECK_CUDA(cudaFree(d_img_out));
     CHECK_CUDA(cudaFree(dx));
@@ -129,8 +130,10 @@ int main(int argc, char **argv)
     CHECK_CUDA(cudaFreeHost(hz));
     CHECK_CUDA(cudaFreeHost(h_img_in));
     CHECK_CUDA(cudaFreeHost(h_img_out));
+    
     for (auto &s : streams)
         cudaStreamDestroy(s);
+    
     cudaEventDestroy(e_start);
     cudaEventDestroy(e_after_h2d);
     cudaEventDestroy(e_after_k);
